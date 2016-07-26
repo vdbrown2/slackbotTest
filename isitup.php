@@ -1,3 +1,5 @@
+<?php
+
 $user_agent = "IsitupForSlack/1.0 (https://github.com/mccreath/istiupforslack; mccreath@gmail.com)";
 $command = $_POST['command'];
 $domain = $_POST['text'];
