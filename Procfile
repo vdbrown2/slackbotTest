@@ -1,1 +1,1 @@
-bot php isitup.php
+web: php isitup.php
