@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "lithios slackbot test",
   "main": "index.js",
-  "dependencies":{
+  "dependencies": {
+    "body-parser": "^1.x.x",
     "express": "^4.x.x",
-    "body-parser": "^1.x.x"
-
+    "request": "^2.74.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
