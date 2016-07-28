@@ -1,1 +1,1 @@
-web: php isitup.php
+web: node app
