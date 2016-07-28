@@ -17,37 +17,37 @@ module.exports = function (req, res, next) {
 		times = matches[1];
 		die = matches[2];
 
-	      // roll dice and sum
-		for (var i = 0; i < times; i++) {
-		  var currentRoll = roll(1, die);
-		  rolls.push(currentRoll);
-		  total += currentRoll;
-		}
-
-		// write response message and add to payload
-		botPayload.text = req.body.user_name + ' rolled ' + times + 'd' + die + ':\n' +
-		                          rolls.join(' + ') + ' = *' + total + '*';
-
-		botPayload.username = 'dicebot';
-		botPayload.channel = req.body.channel_id;
-		botPayload.icon_emoji = ':game_die:';
-		// send dice roll
-		send(botPayload, function (error, status, body) {
-		  if (error) {
-		    return next(error);
-		  } else if (status !== 200) {
-		    // inform user that our Incoming WebHook failed
-		    return next(new Error('Incoming WebHook: ' + status + ' ' + body));
-		  } else {
-		    return res.status(200).end();
-		  }
-		});
-
     } else {
       // send error message back to user if input is bad
       return res.status(200).send('<number>d<sides>');
     }
-  } 
+  }
+
+    // roll dice and sum
+	for (var i = 0; i < times; i++) {
+	  var currentRoll = roll(1, die);
+	  rolls.push(currentRoll);
+	  total += currentRoll;
+	}
+
+	// write response message and add to payload
+	botPayload.text = req.body.user_name + ' rolled ' + times + 'd' + die + ':\n' +
+	                          rolls.join(' + ') + ' = *' + total + '*';
+
+	botPayload.username = 'dicebot';
+	botPayload.channel = req.body.channel_id;
+	botPayload.icon_emoji = ':game_die:';
+	// send dice roll
+	send(botPayload, function (error, status, body) {
+	  if (error) {
+	    return next(error);
+	  } else if (status !== 200) {
+	    // inform user that our Incoming WebHook failed
+	    return next(new Error('Incoming WebHook: ' + status + ' ' + body));
+	  } else {
+	    return res.status(200).end();
+	  }
+	}); 
 }
 
 function roll (min, max) {
@@ -58,6 +58,7 @@ function send (payload, callback) {
   //var path = process.env.INCOMING_WEBHOOK_PATH;
   var path = "T1V2Y7KNW/B1VRFH475/1qUUiDAlR9gFV92JB3OTljaU"
   var uri = 'https://hooks.slack.com/services' + path;
+  //uri = "https://hooks.slack.com/services/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"
   console.log("about to send request");
 
   request({
