@@ -50,7 +50,7 @@ module.exports = function (req, res, next) {
   } 
 }
 
-function roll () {
+function roll (min, max) {
 	  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
