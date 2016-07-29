@@ -29,7 +29,7 @@ var port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // test route
-app.get('/', function (req, res) { res.status(200).send('Hello world!') });
+//app.get('/', function (req, res) { res.status(200).send('Hello world!') });
 
 app.post('/hello', hellobot);
 app.post('/roll', dicebot);
@@ -44,7 +44,7 @@ app.get('/auth/callback',
     res.redirect('/');
   });
 
-app.all('/', function(req, res){
+app.get('/', function(req, res){
   
   if(!req.session.access_token) return res.redirect('/auth');
   
