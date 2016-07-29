@@ -53,6 +53,7 @@ app.all('/', function(req, res){
 
   gcal(accessToken).calendarList.list(function(err, data) {
     if(err) return res.send(500,err);
+    console.log(data);
     return res.send(data);
   });
 });
